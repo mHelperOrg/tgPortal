@@ -9,24 +9,28 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.mhelper.exceptions.ErrorGettingCode;
+import ru.mhelper.exceptions.TelegramBotServiceException;
 import ru.mhelper.service.code.TelegramCodeService;
 
+import static ru.mhelper.exceptions.TelegramBotServiceException.ERROR_SEND_MESSAGE;
 
 @Service
 public class Bot extends TelegramLongPollingBot {
-    private final Logger LOGGER = LoggerFactory.getLogger(Bot.class);
 
-    private final static String NUMBER_MESSAGE = "Полученный код: ";
-    private final static String NUMBER_ERROR = "Ошибка получения кода. Попробуйте повторить позже.";
+    private static final Logger LOGGER = LoggerFactory.getLogger(Bot.class);
 
-    private final static String NUMBER_OPERATION = "number";
-    private final static String START_OPERATION = "/start";
+    private static final String NUMBER_MESSAGE = "Полученный код: ";
+    private static final String NUMBER_ERROR = "Ошибка получения кода. Попробуйте повторить позже.";
+
+    private static final String NUMBER_OPERATION = "number";
+    private static final String START_OPERATION = "/start";
 
     @Value("${bot.name}")
-    private String BOT_NAME;
+    private String botName;
 
     @Value("${bot.token}")
-    private String BOT_TOKEN;
+    private String botToken;
 
     private final TelegramCodeService telegramCodeService;
 
@@ -36,12 +40,12 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return BOT_NAME;
+        return botName;
     }
 
     @Override
     public String getBotToken() {
-        return BOT_TOKEN;
+        return botToken;
     }
 
     @Override

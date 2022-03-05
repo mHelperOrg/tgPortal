@@ -18,7 +18,7 @@ import static ru.mhelper.controller.CodeController.URL;
 @RestController
 @RequestMapping(URL)
 @CrossOrigin(origins = "*", maxAge = 3600)
-@Api(description = "Тестовый контроллер")
+//@Api(description = "Тестовый контроллер")
 public class CodeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CodeController.class);
