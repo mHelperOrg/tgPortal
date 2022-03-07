@@ -1,6 +1,5 @@
 package ru.mhelper.controller;
 
-import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.mhelper.cfg.constants.Constants;
-import ru.mhelper.service.code.TelegramCodeServiceImpl;
 import ru.mhelper.dto.UserIdTimed;
+import ru.mhelper.service.code.TelegramCodeServiceImpl;
 
 import java.util.Map;
 
